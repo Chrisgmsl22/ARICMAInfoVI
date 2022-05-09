@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Clientes</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="listadoClientes" id="clientes"> <!-- INdicamos que vamos a reutilizar esta seccion desde otra página -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{persona.titulo-lista}]]</h4>
+                            </div>
+                            
+                            <div th:if="${personas != null && !personas.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{persona.nombre}">Nombre</th>
+                                            <th th:text="#{persona.saldo}">Saldo</th>
+                                            <th>[[#{persona.email}]]</th>
+                                            <th>[[#{persona.telefono}]]</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr th:each="persona, contador : ${personas}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${persona.nombre}]] [[${persona.apellido}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('$#, ##0.00').format(persona.saldo)}]]</td>
+                                            <td>[[${persona.email}]]</td>
+                                            <td>[[${persona.telefono}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.idPersona}" class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idPersona=${persona.idPersona})} " class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]th:href="@{/eliminar(idPersona=${persona.idPersona})} " 
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="text-center p-2" th:if="${personas == null || personas.empty}">
+                                <span>[[#{persona.lista-vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Más tarjetas -->
+                    <div class="col-md-3">
+                        <div class="card text-center bg-danger text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{persona.saldoTotal}]]</h3> <!-- PENDIENTE -->
+                                <h4 class="display-4">
+                                    [[${new java.text.DecimalFormat('$#, ##0.00').format(saldoTotal)}]]
+                                </h4>
+                            </div>
+                        </div>
+                        
+                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h3>[[#{persona.totalClientes}]]</h3>
+                            <h4 class="display-4">
+                                <i class="fa fa-users"></i> [[${totalClientes}]]
+                            </h4>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

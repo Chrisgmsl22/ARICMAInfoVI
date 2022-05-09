@@ -3,14 +3,14 @@ package unam.infovi.aricma;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication //Notacion que hace referencia a que es una aplicacion de Spring Boot
 public class PanaderiaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PanaderiaApplication.class, args);
 	}
         /**
-         * Esta es el "main" de la aplicación Spring Boot, aqui se cargará
+         *  Esta es el "main" de la aplicación Spring Boot, aqui se cargará
          * la misma de manera que se va a ejecutar en el momento que se levante 
          * la aplicación.
          * 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+      <!--xmlns="http://www.w3.org/1999/xhtml"-->
+    <head th:replace="layout/plantilla :: head">
+        <title>[[#{persona.formulario}]]</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <section th:replace="layout/editarCliente :: editarCliente"></section>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+        
+
+        
+        
+        
+    </body>
+</html>
