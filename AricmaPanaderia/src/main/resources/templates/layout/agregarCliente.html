@@ -18,12 +18,10 @@ and open the template in the editor.
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
                             <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Cliente</h5> <!-- PENDIENTE -->
-                            <button class="close" data-dismiss="modal">
-                                <span>&times;</span>
-                            </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         
-                        <form th:action="@{/guardar}" th:object="${persona}" method="POST" class="was-validated">
+                        <form th:action="@{/guardar}" th:object="${persona}" method="post" class="was-validated">
                             <!-- Validacion con bootstrrap en este caso -->
                             <div class="modal-body">
                                 

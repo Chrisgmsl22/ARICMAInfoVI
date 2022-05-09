@@ -67,10 +67,15 @@ public class Controlador { //Ya no es necesario extender de servlet
         return "index"; //Mandando a la pagina HTML
     }
     
+    
+    //Dentro del controlador agregamos el resto de rutas a donde el controlador
+    //Dirigirá dependiendo el caso, a determinada vista
+    
     //Agregamos el path de agregar
     @GetMapping("/agregar")
-    public String agregar(Persona persona){
+    public String agregar(Persona persona){ //SPring inyecta un objeto de tipo persona, no tenemos que crealo
         return "modificar"; //Va a realizar las dos funciones
+        //Solamente redirige hacia la vista
     }
     
     @PostMapping("/guardar")

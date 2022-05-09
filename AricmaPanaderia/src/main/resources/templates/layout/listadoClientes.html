@@ -22,7 +22,7 @@ and open the template in the editor.
                             </div>
                             
                             <div th:if="${personas != null && !personas.empty}">
-                                <table class="table table-stryped">
+                                <table class="table table-striped">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
@@ -50,7 +50,7 @@ and open the template in the editor.
                                             
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idPersona=${persona.idPersona})} " class="btn btn-dark">
-                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]th:href="@{/eliminar(idPersona=${persona.idPersona})} " 
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]  
                                                 </a>
                                             </td>
                                         </tr>
