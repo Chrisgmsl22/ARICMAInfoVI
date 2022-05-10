@@ -16,8 +16,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <!-- Formulario a modificar -->
             <form action="@{/guardar}" th:object="${persona}" method="post" class="was-validated">
 
-                <!-- como vamos a modificar el objeto se va a utilizar el ID persona -->
-                <input type="hidden" name="idPersona" th:field="*{idPersona}"/>
+                <!-- como vamos a modificar el objeto se va a utilizar el ID persona  -->
+                <input type="hidden" name="idPersona" th:field="*{idPersona}"/> 
                 <section th:replace="layout/botonesEditar :: botonesEditar"></section> <!-- Llamamos a ptra pagina con los botones de editar -->
 
                 <div id="details">
