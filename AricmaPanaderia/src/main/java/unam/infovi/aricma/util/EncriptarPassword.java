@@ -14,9 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class EncriptarPassword {
      //Esta clase es un metodo main
     public static void main(String[] args) {
-       
         
-        String password = "#hhh22";
+        
+        String password = "123456789";
         System.out.println("password sin encryptar= " + password);
         System.out.println("password encriptado= " + encriptarPassword(password));
     }
