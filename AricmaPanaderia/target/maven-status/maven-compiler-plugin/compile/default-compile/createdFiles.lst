@@ -1,0 +1,14 @@
+unam\infovi\aricma\model\Persona.class
+unam\infovi\aricma\model\Empleado.class
+unam\infovi\aricma\web\SecurityConfig.class
+unam\infovi\aricma\model\Rol.class
+unam\infovi\aricma\web\WebConfig.class
+unam\infovi\aricma\dao\IPersonaDao.class
+unam\infovi\aricma\model\Usuario.class
+unam\infovi\aricma\util\EncriptarPassword.class
+unam\infovi\aricma\PanaderiaApplication.class
+unam\infovi\aricma\controller\Controlador.class
+unam\infovi\aricma\service\PersonaServiceImpl.class
+unam\infovi\aricma\service\PersonaService.class
+unam\infovi\aricma\dao\IUsuarioDao.class
+unam\infovi\aricma\service\UsuarioService.class
