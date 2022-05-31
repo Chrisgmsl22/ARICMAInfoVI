@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Inventario</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="listadoInventario" id="inventario"> <!-- INdicamos que vamos a reutilizar esta seccion desde otra página -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{inventario.titulo-lista}]]</h4>
+                            </div>
+                            
+                            <div th:if="${inventario != null && !inventario.empty}">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{inventario.nombre}">Nombre</th>
+                                            <th th:text="#{inventario.cantidad}">Cantidad</th>
+                                            <th th:text="#{inventario.unidad}">Unidad</th>
+                                            <th th:text="#{inventario.entrada}">Fecha Entrada</th>
+                                            <th th:text="#{inventario.salida}">Fecha Salida</th>
+                                            
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr th:each="inventario, contador : ${inventario}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${inventario.nombre}]] 
+                                            <td>[[${inventario.cantidad}]]</td> 
+                                            <td>[[${inventario.unidad}]]</td>
+                                            <td>[[${inventario.entrada}]]</td> 
+                                            <td>[[${inventario.salida}]]</td> 
+                                           
+                                            <td>
+                                            
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarInventario/} + ${inventario.idInventario}" class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarInventario(idInventario=${inventario.idInventario})} " class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]  
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="text-center p-2" th:if="${inventario == null || inventario.empty}">
+                                <span>[[#{inventario.lista-vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+
+        <section th:fragment="editarEmpleado">
+            <!-- Formulario a modificar -->
+            <form th:action="@{/guardarEmpleado}" th:object="${empleado}" method="post" class="was-validated">
+
+                <!-- como vamos a modificar el objeto se va a utilizar el ID persona  -->
+                <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}"/> 
+                <section th:replace="layout/botonesEditarEmpleado :: botonesEditarEmpleado"></section> <!-- Llamamos a ptra pagina con los botones de editar -->
+
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.editar}]]</h4>
+                                    </div>
+                                    
+                                    <div class="card-body">
+                                        <div class="form-group"> <!-- CLase para poderlos agrupar -->
+                                            
+                                            <label for="nombre">[[#{empleado.nombre}]]</label>
+                                            <input type="text" name="nombre" class="form-control" 
+                                                   required="true" th:field="*{nombre}" />
+                                            
+                                            <label for="apellido">[[#{empleado.apellido}]]</label>
+                                            <input type="text" name="apellido" class="form-control" 
+                                                   required="true" th:field="*{apellido}" />
+                                            
+                                            <label for="numCelular">[[#{empleado.numCelular}]]</label>
+                                            <input type="text" name="numCelular" class="form-control" 
+                                                   required="true" th:field="*{numCelular}" />
+                                            
+                                            <label for="numCasa">[[#{empleado.numCasa}]]</label>
+                                            <input type="text" name="numCasa" class="form-control" 
+                                                   required="true" th:field="*{numCasa}" />
+                                            
+                                            <label for="direccion">[[#{empleado.direccion}]]</label>
+                                            <input type="text" name="direccion" class="form-control" 
+                                                   required="true" th:field="*{direccion}" />
+                                            
+                                            <label for="contactoEmergencia">[[#{empleado.contactoEmergencia}]]</label>
+                                            <input type="text" name="contactoEmergencia" class="form-control" 
+                                                   required="true" th:field="*{contactoEmergencia}" />
+                                            
+                                            <label for="puesto">[[#{empleado.puesto}]]</label>
+                                            <input type="text" name="puesto" class="form-control" 
+                                                   required="true" th:field="*{puesto}" />
+                                            
+                                            <label for="salario">[[#{empleado.salario}]]</label>
+                                            <input type="number" name="salario" class="form-control" 
+                                                   required="true" th:field="*{salario}" step="any"/>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </body>
+</html>

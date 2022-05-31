@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Botones editar empleado</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        
+        <!-- configuramos los botones -->
+        <section th:fragment="botonesEditarEmpleado">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/}" class="btn btn-light">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-check"></i> [[#{accion.guardar }]]
+                            </button>
+                        </div>
+                        
+                        
+                        
+                        <div class="col-md-3">
+                            <a th:href="@{/empleado(idEmpleado=${empleado.idEmpleado})}" class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

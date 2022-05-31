@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Empleados</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="listadoEmpleados" id="empleados"> <!-- INdicamos que vamos a reutilizar esta seccion desde otra página -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{empleado.titulo-lista}]]</h4>
+                            </div>
+                            
+                  <!--          <div th:if="${empleados != null && !empleados.empty}"> -->
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{empleado.nombre}">Nombre</th>
+                                            <th th:text="#{empleado.numCelular}">Celular</th>
+                                            <th th:text="#{empleado.numCasa}">Telefono</th>
+                                              <th th:text="#{empleado.direccion}">Direccion</th>
+                                               <th th:text="#{empleado.contactoEmergencia}">Contacto Emergencia</th>
+                                            <th th:text="#{empleado.puesto}">Puesto</th>
+                                            <th th:text="#{empleado.salario}">Salario</th>
+              
+                                               <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr th:each="empleado, contador : ${empleados}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${empleado.nombre}]] [[${empleado.apellido}]]</td>
+                                            <td>[[${empleado.numCelular}]]</td>   
+                                            <td>[[${empleado.numCasa}]]</td>
+                                            <td>[[${empleado.direccion}]]</td>
+                                            <td>[[${empleado.contactoEmergencia}]]</td>
+                                            <td>[[${empleado.puesto}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('$#, ##0.00').format(empleado.salario)}]]</td>
+                                            
+                                            
+                                            
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEmpleado/} + ${empleado.idEmpleado}" class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarEmpleado(idEmpleado=${empleado.idEmpleado})} " class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]  
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="text-center p-2" th:if="${empleados == null || empleados.empty}">
+                                <span>[[#{empleado.lista-vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Más tarjetas -->
+                   
+                        
+                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h3>[[#{empleado.totalEmpleados}]]</h3>
+                            <h4 class="display-4">
+                                <i class="fa fa-users"></i> [[${totalEmpleados}]]
+                            </h4>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
