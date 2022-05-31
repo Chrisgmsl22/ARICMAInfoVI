@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+
+        <section th:fragment="editarProducto">
+            <!-- Formulario a modificar -->
+            <form th:action="@{/guardarProducto}" th:object="${producto}" method="post" class="was-validated">
+
+                <!-- como vamos a modificar el objeto se va a utilizar el ID persona  -->
+                <input type="hidden" name="idProducto" th:field="*{idProducto}"/> 
+                <section th:replace="layout/botonesEditarProducto :: botonesEditarProducto"></section> <!-- Llamamos a ptra pagina con los botones de editar -->
+
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.editar}]]</h4>
+                                    </div>
+                                    
+                                    <div class="card-body">
+                                        <div class="form-group"> <!-- CLase para poderlos agrupar -->
+                                            
+                                            <label for="nombre">[[#{producto.nombre}]]</label>
+                                            <input type="text" name="nombre" class="form-control" 
+                                                   required="true" th:field="*{nombre}" />
+                                            
+                                            <label for="codigo">[[#{producto.codigo}]]</label>
+                                            <input type="text" name="codigo" class="form-control" 
+                                                   required="true" th:field="*{codigo}" />
+                                            
+                                         
+                                            <label for="precio">[[#{producto.precio}]]</label>
+                                            <input type="number" name="precio" class="form-control" 
+                                                   required="true" th:field="*{precio}" step="any"/>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </body>
+</html>

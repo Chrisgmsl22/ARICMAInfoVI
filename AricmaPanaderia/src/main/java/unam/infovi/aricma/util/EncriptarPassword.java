@@ -16,7 +16,7 @@ public class EncriptarPassword {
     public static void main(String[] args) {
         
         
-        String password = "123456789";
+        String password = "Mark2702";
         System.out.println("password sin encryptar= " + password);
         System.out.println("password encriptado= " + encriptarPassword(password));
     }

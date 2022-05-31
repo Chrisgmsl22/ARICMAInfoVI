@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/**
+ *
+ * @author ItzelGonzalez
+ * Terminado
+ */
 package unam.infovi.aricma.model;
 
 import java.io.Serializable;
@@ -11,52 +16,43 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import lombok.Data;
-
-//Nuevas importaciones
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import lombok.Data;
 
-/**
- *
- * @author Itz
- */
-@Data //Framework de Lombok genera el codigo necesario para hacerlo un JavaBean
-@Entity//La convertimos en una clase de entidad
-@Table(name = "empleado") //Para indicar el nombre exacto de la tabla en la base de datos (relacion)
-public class Empleado implements Serializable{
+@Data
+@Entity
+@Table(name = "empleado")
+public class Empleado implements Serializable {
+    private static final long serialVersionUID = 1L;
     
-    private static final long serialVersionUID = 1L; //Con esto se implementa la interfaz de serializable
-    
-    //Mapeo de la llave primaria
+//Mapeo llave primaria
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+ 
     private Long idEmpleado;
-    
-    //Agregamos las notaciones dentro de la clase de entidad para indicar que no son validos los valores nulos
-    
     @NotEmpty
     private String nombre;
     
     @NotEmpty
     private String apellido;
+   
+    @NotEmpty
+    private String numCelular;
+    
+    private String numCasa;
     
     @NotEmpty
-    @Email
-    private String email;
+    private String direccion;
+   
     
-    @NotEmpty //Para cadenas
-    private String telefono;
+    private String contactoEmergencia;
+   
+    @NotEmpty
+    private String puesto;
     
-    @NotNull //Para números
+    @NotNull
+    double salario;
+
     
-    private Double sueldo;
 }
-
-/**
- * Nos encargamos de hacer una clase de Entidad, con sus anotaciones referentes
- * 
- * agregaremos el concepto de validaciones
- */
-

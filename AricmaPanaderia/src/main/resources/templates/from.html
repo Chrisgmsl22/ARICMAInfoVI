@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-4">
+            
+            <div class="col-sm-6">
+               <form th:action="@{/save}" th:object=${empleado} method="POST">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Nuevo empleado</h3>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Núm. Empleado</label>
+                                    <input th:field="*{id_empleado}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input th:field="*{nombre}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <input th:field="*{apellido}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Núm. de celular</label>
+                                    <input th:field="*{numCelular}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Núm. de casa</label>
+                                    <input th:field="*{numCasa}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección</label>
+                                    <input th:field="*{direccion}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contacto de Emergencia</label>
+                                    <input th:field="*{contactoEmergencia}" type="text" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Puesto</label>
+                                    <input th:field="*{puesto}" type="text" class="form-control"/>
+                                </div>     
+                                <div class="form-group">
+                                    <label>Salario</label>
+                                    <input th:field="*{salario}" type="text" class="form-control"/>
+                                </div>
+                                <div class="card-footer">
+                                    <input type="submit" value="Guardar" class="btn btn-success">
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

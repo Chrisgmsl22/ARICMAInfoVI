@@ -30,16 +30,19 @@ and open the template in the editor.
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        <a class="nav-link" href="#">Proveedores</a>
-        <a class="nav-link" href="#">Empleados</a>
-        <a class="nav-link" href="#">Materias primas</a>
-        <a class="nav-link" href="#">Productos</a>
+        <a class="nav-link" href="#" th:href="@{/index}">Inicio</a>
+      
+       <a class="nav-link" href="#" th:href="@{/proveedores}">Proveedores</a>
+         <a class="nav-link" href="#" th:href="@{/empleado}">Empleados</a>
+        <a class="nav-link" href="#" th:href="@{/inventario}" >Materias primas</a>
+        <a class="nav-link" href="#" th:href="@{/producto}">Productos</a>
         
       </div>
     </div>
   </div>
 </nav>
+ 
+  
         
         
         <!-- Carrusel -->

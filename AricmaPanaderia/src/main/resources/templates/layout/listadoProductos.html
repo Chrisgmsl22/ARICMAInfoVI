@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Proveedores</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="listadoProductos" id="producto"> <!-- INdicamos que vamos a reutilizar esta seccion desde otra página -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{productos.titulo-lista}]]</h4>
+                            </div>
+                            
+                            <div th:if="${productos != null && !productos.empty}">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{producto.nombre}">Nombre</th>
+                                            <th th:text="#{producto.codigo}">Codigo</th>
+                                            <th th:text="#{producto.precio}">Precio</th>
+                                            
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr th:each="producto, contador : ${productos}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${producto.nombre}]] </td>
+                                            <td>[[${producto.codigo}]] </td>
+                                            <td>[[${new java.text.DecimalFormat('$#, ##0.00').format(producto.precio)}]]</td>
+                                           
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarProducto/} + ${producto.idProducto}" class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idProducto=${producto.idProducto})} " class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]  
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="text-center p-2" th:if="${productos == null || productos.empty}">
+                                <span>[[#{productos.lista-vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                 
+                        
+                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h3>[[#{productos.totalProductos}]]</h3>
+                            <h4 class="display-4">
+                                <i class="fa fa-users"></i> [[${totalProductos}]]
+                            </h4>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+    </body>
